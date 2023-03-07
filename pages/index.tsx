@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from 'next/link'
 import { useRef, useState, Fragment } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { VibeType } from "../components/DropDown";
@@ -19,13 +17,14 @@ import {
   Card,
   CardBody,
 } from "@material-tailwind/react";
+import { Chat } from "../components/Chat";
 
 const channelData = [
-  { address: "160 Park Ave, New York, NY", name: "Eleven Madison Park", count: "3", url: "https://www.elevenmadisonpark.com/"},
-  { address: "115 Rua das Flores, Porto, Portugal", name: "Casa de Chá da Boa Nova", count: "2", url: "https://www.casadechadaboanova.pt/"},
-  { address: "19/F, The Balcony, 535 Jaffe Rd, Causeway Bay, Hong Kong", name: "Ta Vie", count: "2", url: "https://tavie.hk/"},
-  { address: "Pl. Brugmann 21, 1050 Ixelles, Belgium", name: "Bon-Bon", count: "2", url: "http://www.bon-bon.be/index.php"},
-  { address: "Rua do Almada 151, 4050-037 Porto, Portugal", name: "Antiqvvm", count: "1", url: "https://antiqvvm.pt/en/"}
+  { address: "160 Park Ave, New York, NY", name: "Eleven Madison Park", count: "3", url: "https://www.elevenmadisonpark.com/" },
+  { address: "115 Rua das Flores, Porto, Portugal", name: "Casa de Chá da Boa Nova", count: "2", url: "https://www.casadechadaboanova.pt/" },
+  { address: "19/F, The Balcony, 535 Jaffe Rd, Causeway Bay, Hong Kong", name: "Ta Vie", count: "2", url: "https://tavie.hk/" },
+  { address: "Pl. Brugmann 21, 1050 Ixelles, Belgium", name: "Bon-Bon", count: "2", url: "http://www.bon-bon.be/index.php" },
+  { address: "Rua do Almada 151, 4050-037 Porto, Portugal", name: "Antiqvvm", count: "1", url: "https://antiqvvm.pt/en/" }
 ];
 
 const Home: NextPage = () => {
@@ -73,7 +72,6 @@ const Home: NextPage = () => {
       throw new Error(response.statusText);
     }
 
-    // This data is a ReadableStream
     const data = response.body;
     if (!data) {
       return;
@@ -168,9 +166,9 @@ const Home: NextPage = () => {
                     <AccordionBody className="px-5">
                       <div className="text-base sm:text-lg text-left ml-2 text-gray-800 font-semibold">About</div>
                       <div className="text-left mx-2 mt-2">{restOfBio}</div>
-                      <div className="mt-5 mx-2 text-left">
-                        <Button className="bg-purple-700 py-2 px-3 rounded-md text-white text-sm mr-4 font-semibold" onClick={handleOpenDialog}>Find Nearby Restaurant</Button>
-                        <Button className="bg-purple-700 py-2 px-3 rounded-md text-white text-sm mr-4 font-semibold" onClick={() => setShowList(!showList)}>Talk To Chef</Button>
+                      <div className="mt-5 mx-2 text-left flex flex-col sm:flex-row">
+                        <Button className="bg-purple-700 py-2 px-3 rounded-md text-white text-sm mr-4 font-semibold my-1 sm:w-48 w-full" onClick={handleOpenDialog}>Find Nearby Restaurant</Button>
+                        <Button className="bg-purple-700 py-2 px-3 rounded-md text-white text-sm mr-4 font-semibold my-1 sm:w-48 w-full" onClick={() => setShowList(!showList)}>Talk To Chef</Button>
                       </div>
                       {showList == true && (
                         <div className="mt-10">
@@ -198,6 +196,7 @@ const Home: NextPage = () => {
                             <div className="text-base sm:text-lg text-left ml-2 text-gray-800 font-semibold">Talk to Chef</div>
                             <Button className="bg-purple-700 py-2 px-3 rounded-md text-white text-sm font-semibold" >Generate New Chef</Button>
                           </div>
+                          <Chat />
                         </div>
                       )}
                     </AccordionBody>
