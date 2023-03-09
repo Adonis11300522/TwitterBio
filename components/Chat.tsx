@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Button } from "@material-tailwind/react"
 import { type ChatGPTMessage, ChatLine, LoadingChatLine } from './ChatLine'
 import { useCookies } from 'react-cookie';
+import { SendButton } from './Button';
 
 const COOKIE_NAME = 'nextjs-example-ai-chat-gpt3'
 
@@ -31,7 +31,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
         setInput(e.target.value)
       }}
     />
-    <Button
+    <SendButton
       type="submit"
       className="ml-4 flex-none bg-purple-700 py-2 px-3 rounded-md text-white text-sm font-semibold"
       onClick={() => {
@@ -40,7 +40,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
       }}
     >
       Say
-    </Button>
+    </SendButton>
   </div>
 )
 
