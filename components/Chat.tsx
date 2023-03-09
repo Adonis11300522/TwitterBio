@@ -33,7 +33,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     />
     <SendButton
       type="submit"
-      className="ml-4 flex-none bg-purple-700 py-2 px-3 rounded-md text-white text-sm font-semibold"
+      className="ml-4 flex-none"
       onClick={() => {
         sendMessage(input)
         setInput('')
