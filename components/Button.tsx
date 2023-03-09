@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-export function Button({ className, ...props }: any) {
+export function SendButton({ className, ...props }: any) {
   return (
     <button
       className={clsx(
